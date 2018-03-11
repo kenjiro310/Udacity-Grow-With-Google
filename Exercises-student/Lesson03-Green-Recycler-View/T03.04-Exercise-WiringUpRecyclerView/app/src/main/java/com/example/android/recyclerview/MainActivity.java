@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // TODO (4) Use findViewById to store a reference to the RecyclerView in mNumbersList
-        mNumberList = (RecyclerView) findViewById(R.id.rv_numbers)
+        mNumberList = (RecyclerView) findViewById(R.id.rv_numbers);
 
         // TODO (5) Create a LinearLayoutManager variable called layoutManager
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
