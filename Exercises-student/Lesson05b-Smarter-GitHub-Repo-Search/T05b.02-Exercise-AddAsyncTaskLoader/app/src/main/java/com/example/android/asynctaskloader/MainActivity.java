@@ -15,11 +15,10 @@
  */
 package com.example.android.asynctaskloader;
 
-import android.content.AsyncTaskLoader;
-import android.content.Loader;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -35,7 +34,8 @@ import java.io.IOException;
 import java.net.URL;
 
 // TODO (1) implement LoaderManager.LoaderCallbacks<String> on MainActivity
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+public class MainActivity extends AppCompatActivity implements
+        LoaderManager.LoaderCallbacks<String> {
 
     /* A constant to save and restore the URL that is being displayed */
     private static final String SEARCH_QUERY_URL_EXTRA = "query";
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * This number will uniquely identify our Loader and is chosen arbitrarily. You can change this
      * to any number you like, as long as you use the same variable name.
      */
-    private static final int GITHUB_SEARCH_LOADER;
+    private static final int GITHUB_SEARCH_LOADER = 22;
 
     private EditText mSearchBoxEditText;
 
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
          * was the simplest.
          */
         if (TextUtils.isEmpty(githubQuery)){
-            mUrlDisplayTextView.setTextView.setText("No query entered");
+            mUrlDisplayTextView.setText("No query entered");
             return;
         }
 
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         LoaderManager loaderManager = getSupportLoaderManager();
 
         // TODO (22) Get our Loader by calling getLoader and passing the ID we specified
-        Loader<String> githubSearchLoader = loaderManager.getLoader(GITHUB_SEARCH_LOADER);
+        android.support.v4.content.Loader<String> githubSearchLoader = loaderManager.getLoader(GITHUB_SEARCH_LOADER);
         // TODO (23) If the Loader was null, initialize it. Else, restart it.
         if (githubSearchLoader == null) {
             loaderManager.initLoader(GITHUB_SEARCH_LOADER, queryBundle, this);
@@ -263,8 +263,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     // TODO (16) Override onLoaderReset as it is part of the interface we implement, but don't do anything in this method
     @Override
-    public void onLoaderRest(Loader<String> loader) {
-         /*
+    public void onLoaderReset(Loader<String> loader) {
+        /*
          * We aren't using this method in our example application, but we are required to Override
          * it to implement the LoaderCallbacks<String> interface
          */
